@@ -1,11 +1,17 @@
 import sys
 sys.setrecursionlimit(4100000)
 
+import logging
+
+# logging.basicConfig(level=logging.DEBUG)
+
+logger = logging.getLogger(__name__)
+
 
 def resolve():
     N, A = [int(x) for x in sys.stdin.readline().split()]
 
-    print('{} {}'.format(N, A))
+    logger.debug('{} {}'.format(N, A))
 
 
 if __name__ == "__main__":
