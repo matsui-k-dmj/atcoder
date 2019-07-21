@@ -7,29 +7,28 @@ logging.basicConfig(level=logging.DEBUG)
 
 logger = logging.getLogger(__name__)
 
+from collections import defaultdict
 
-# @profile
 def resolve():
-    N = [int(x) for x in sys.stdin.readline().split()][0]
-    a_list = [int(x) for x in sys.stdin.readline().split()]
+    N, D = [int(x) for x in sys.stdin.readline().split()]
 
-    logger.debug('{} {}'.format(N, a_list))
+    logger.debug('{} {}'.format(N, D))
+    def rec(n_rec, d_rec):
+        if n_rec == 1:
+            pass
 
-    box_list = [0 for _ in range(N)]
+        else:
+            suma = 0
+            suma += rec(n_rec-1, d_rec)
 
-    for i in reversed(range(N)):
-        suma = sum(box_list[i:N:i+1])
+            for i in range(2,7):
+                suma += rec(n_rec-1, d_rec/i)
+                
+            return suma
 
-        r = suma % 2
-        if r != a_list[i]:
-            box_list[i] = 1
-
-    s = sum(box_list)
-    print(s)
-
-    if s > 0:
-        print(' '.join(
-            [str(i + 1) for i in range(len(box_list)) if box_list[i]]))
+    suma = rec(N, D)
+    
+    print(suma / 6**N)
 
 
 if __name__ == "__main__":
@@ -43,7 +42,6 @@ import sys
 from io import StringIO
 import unittest
 
-
 class TestClass(unittest.TestCase):
     def assertIO(self, input, output):
         stdout, stdin = sys.stdout, sys.stdin
@@ -53,16 +51,11 @@ class TestClass(unittest.TestCase):
         out = sys.stdout.read()[:-1]
         sys.stdout, sys.stdin = stdout, stdin
         self.assertEqual(out, output)
-
-    def test_入力例_1(self):
-        input = """3
-1 0 0"""
-        output = """1
-1"""
+    def test_Sample_Input_1(self):
+        input = """2 6"""
+        output = """0.416666667"""
         self.assertIO(input, output)
-
-    def test_入力例_2(self):
-        input = """5
-0 0 0 0 0"""
-        output = """0"""
+    def test_Sample_Input_2(self):
+        input = """3 2"""
+        output = """0.875000000"""
         self.assertIO(input, output)
