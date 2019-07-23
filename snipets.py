@@ -35,8 +35,14 @@ def ceil_int(a, devider):
 
 
 # 配列の初期化
-a = [0] * 5
-b = [[0] * 3 for i in range(5)]
+N0, N1, N2, N3 = 5, 6, 8, 9
+a = [0] * N0
+
+b = [[0] * N2 for i in range(N0)]
+
+c = [[[0] * N2 for i in range(N1)] for j in range(N0)]
+
+d = [[[[0] * N3 for i in range(N2)] for i in range(N1)] for j in range(N0)]
 
 # メモ化再帰 (やらないほうがいい)
 from functools import lru_cache
