@@ -68,3 +68,36 @@ a_range = range(1, 11)
 b = list(accumulate(a_range))  # type: ignore
 print(a)
 print(b)
+
+class UnionFindTree(object):
+    def __init__(self, N):
+        self.parent_list = [i for i in range(N)]
+        self.rank_list = [0] * N
+
+    def find(self, i):
+        if self.parent_list[i] == i:
+            return i
+        else:
+            p = self.find(self.parent_list[i])
+            self.parent_list[i] = p
+            return p
+
+    def unite(self, x, y):
+        root_x = self.find(x)
+        root_y = self.find(y)
+
+        if root_x == root_y:
+            return
+
+        if self.rank_list[root_x] > self.rank_list[root_y]:
+            # root_x のほうが深いので、root_y の 親を root_x にする
+            self.parent_list[root_y] = root_x
+
+        else:
+            self.parent_list[root_x] = root_y
+
+            if self.rank_list[root_x] == self.rank_list[root_y]:
+                self.rank_list[root_x] += 1
+
+    def is_same(self, x, y):
+        return self.find(x) == self.find(y)
