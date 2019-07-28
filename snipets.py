@@ -101,3 +101,9 @@ class UnionFindTree(object):
 
     def is_same(self, x, y):
         return self.find(x) == self.find(y)
+
+# ? の場所
+
+import re
+p = re.compile(r'\?')
+q_index_list = [m.span()[0] for m in p.finditer('aa?82?')]
