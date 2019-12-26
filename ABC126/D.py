@@ -1,3 +1,6 @@
+"""2部グラフ
+"""
+
 import sys
 sys.setrecursionlimit(4100000)
 

@@ -1,29 +1,40 @@
 # atcoder
+
 - [atcoder](#atcoder)
-  - [オーダー](#%E3%82%AA%E3%83%BC%E3%83%80%E3%83%BC)
-  - [便利](#%E4%BE%BF%E5%88%A9)
-  - [Python の list などのオーダー](#Python-%E3%81%AE-list-%E3%81%AA%E3%81%A9%E3%81%AE%E3%82%AA%E3%83%BC%E3%83%80%E3%83%BC)
-  - [pypy じゃだめらしい](#pypy-%E3%81%98%E3%82%83%E3%81%A0%E3%82%81%E3%82%89%E3%81%97%E3%81%84)
-  - [定数倍高速化](#%E5%AE%9A%E6%95%B0%E5%80%8D%E9%AB%98%E9%80%9F%E5%8C%96)
-  - [2重ループ](#2%E9%87%8D%E3%83%AB%E3%83%BC%E3%83%97)
+  - [環境](#%e7%92%b0%e5%a2%83)
+  - [オーダー](#%e3%82%aa%e3%83%bc%e3%83%80%e3%83%bc)
+  - [便利](#%e4%be%bf%e5%88%a9)
+  - [Python の list などのオーダー](#python-%e3%81%ae-list-%e3%81%aa%e3%81%a9%e3%81%ae%e3%82%aa%e3%83%bc%e3%83%80%e3%83%bc)
+  - [pypy じゃだめらしい](#pypy-%e3%81%98%e3%82%83%e3%81%a0%e3%82%81%e3%82%89%e3%81%97%e3%81%84)
+  - [定数倍高速化](#%e5%ae%9a%e6%95%b0%e5%80%8d%e9%ab%98%e9%80%9f%e5%8c%96)
+  - [2 重ループ](#2-%e9%87%8d%e3%83%ab%e3%83%bc%e3%83%97)
+
+## 環境
+
+conda activate atcoder
+
+pypy3 nanka.py
 
 ## オーダー
 
-Python で乗るのは10**6くらいまで
+Python で乗るのは 10\*\*6 くらいまで
 
 ## 便利
 
 - 標準入力にはリダイレクトで渡せる
+
 ```
 python spam.py < sample.txt
 ```
 
 ## Python の list などのオーダー
+
 - del は o(n)なので使わない, 新しく配列作ったほうが速い
-- in も listではo(n), set, dictに直す
-- 
+- in も list では o(n), set, dict に直す
+-
 
 ## pypy じゃだめらしい
+
 - 再帰
 - dict
 - 文字
@@ -31,9 +42,11 @@ python spam.py < sample.txt
 - 内包表記　(ベタ書きの方が速いらしい)
 
 ## 定数倍高速化
+
 - enumerate
 - 小さいループを外に
 - .をなくす
+
 ```python
 r_append = res.append
 
@@ -41,7 +54,7 @@ for i in range(n):
     r_append(1)
 ```
 
-## 2重ループ
+## 2 重ループ
 
 - flag を使う: こっちのほうが絶対わかりやすい
 
@@ -57,6 +70,7 @@ for i in l1:
     if flag:
         break
 ```
+
 - continue, else を 使う: 分かるけどわかりにくい
 
 ```python
