@@ -13,7 +13,7 @@ logger = logging.getLogger(__name__)
 def resolve():
     N, D = [int(x) for x in sys.stdin.readline().split()]
 
-    logger.debug('{} {}'.format(N, D))
+    logger.debug('{}'.format([N, D]))
 
 
 if __name__ == "__main__":
