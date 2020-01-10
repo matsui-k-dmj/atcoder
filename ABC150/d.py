@@ -37,7 +37,13 @@ def resolve():
         print(0)
         return
     else:
-        print(M // L + 1)
+        X = L // 2
+
+        y = M - X
+        if y < 0:
+            print(0)
+        else:
+            print(y // (2 * X) + 1)
 
 
 if __name__ == "__main__":
