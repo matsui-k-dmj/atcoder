@@ -11,9 +11,14 @@ logger = logging.getLogger(__name__)
 
 
 def resolve():
-    N, D = [int(x) for x in sys.stdin.readline().split()]
+    # S = [x for x in sys.stdin.readline().split()][0]  # 文字列 一つ
+    # N = [int(x) for x in sys.stdin.readline().split()][0]  # int 一つ
+    # N, D = [int(x) for x in sys.stdin.readline().split()]  # 複数int
+    # grid = [list(sys.stdin.readline().split()[0]) for _ in range(N)]  # 文字列grid
+    # grid = [[int(x) for x in sys.stdin.readline().split()]
+    #         for _ in range(N)]  # int grid
 
-    logger.debug('{}'.format([N, D]))
+    logger.debug('{}'.format([]))
 
 
 if __name__ == "__main__":
