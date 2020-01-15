@@ -1,8 +1,10 @@
 from functools import reduce
+from collections import Counter
 
 
 class UnionFind:
     def __init__(self, n):
+        self.N = n
         self.parent = list(range(n))
         self.rank = [1 for _ in range(n)]
 
@@ -21,14 +23,11 @@ class UnionFind:
 
         if self.rank[i_root] > self.rank[j_root]:  # ランクが高い方を親にする。
             self.parent[j_root] = i_root
-            self.rank[j_root] = self.rank[i_root]
         elif self.rank[i_root] == self.rank[j_root]:
             self.parent[j_root] = i_root
             self.rank[i_root] += 1
-            self.rank[j_root] += 1
         else:
             self.parent[i_root] = j_root
-            self.rank[i_root] = self.rank[j_root]
 
         return i
 
@@ -37,3 +36,8 @@ class UnionFind:
 
     def setGroup(self, elements):
         reduce(self.unite, elements)
+
+    def getCount(self):  # 要素ごとにそれが属してる集合の要素数を取る
+        roots = [self.findRoot(i) for i in range(self.N)]
+        counts = Counter(roots)
+        return [counts[r] for r in roots]
