@@ -37,7 +37,12 @@ class UnionFind:
     def setGroup(self, elements):
         reduce(self.unite, elements)
 
-    def getCount(self):  # 要素ごとにそれが属してる集合の要素数を取る
+    def getElementCount(self):  # 要素ごとにそれが属してる集合の要素数を取る
         roots = [self.findRoot(i) for i in range(self.N)]
         counts = Counter(roots)
         return [counts[r] for r in roots]
+
+    def getRootCount(self):  # ルートごとにそれが属してる集合の要素数を取る
+        roots = [self.findRoot(i) for i in range(self.N)]
+        counts = Counter(roots)
+        return counts
