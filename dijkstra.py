@@ -103,10 +103,10 @@ def resolve():
 
     logger.debug('{}'.format([N, E, S, G, edge_list]))
 
-    neighbor_list = [[] for _ in range(N)]
+    neighbour_list = [[] for _ in range(N)]
     for v1, v2, dist in edge_list:
-        neighbor_list[v1].append((v2, dist))
-        neighbor_list[v2].append((v1, dist))
+        neighbour_list[v1].append((v2, dist))
+        neighbour_list[v2].append((v1, dist))
 
     dist_list = [10**10 for _ in range(N)]
 
@@ -122,7 +122,7 @@ def resolve():
         else:
             used_list[i_from] = True
 
-        for i_to, delta_dist in neighbor_list[i_from]:
+        for i_to, delta_dist in neighbour_list[i_from]:
             if used_list[i_to]:
                 continue
             old_dist_to = dist_list[i_to]
