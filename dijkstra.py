@@ -34,16 +34,19 @@ class Heap:
             i_left = 2 * i_parent + 1
             i_right = 2 * i_parent + 2
 
+            # 境界条件
             if i_left >= len(self.heap):
                 break
             elif i_right >= len(self.heap):
                 i_right = i_left
 
+            # 子供の小さいほうと交代
             if self.heap[i_left] < self.heap[i_right]:
                 i_replace = i_left
             else:
                 i_replace = i_right
 
+            # 交代
             if self.heap[i_replace] < self.heap[i_parent]:
                 is_updated = True
                 self.heap[i_parent], self.heap[i_replace] = self.heap[
@@ -64,9 +67,11 @@ class Heap:
             is_updated = False
             i_parent = (i_self - 1) // 2
 
+            # 境界
             if i_parent < 0:
                 break
 
+            # 親が自分より小さければ交代
             if self.heap[i_parent] > self.heap[i_self]:
                 is_updated = True
 

@@ -1,59 +1,94 @@
-class Heap:
-    def __init__(self, x_list=None):
-        if x_list is None:
-            x_list = []
-        self.heap = []
-        for x in x_list:
-            self.push(x)
+"""heapq使っても自作Heapと全然速度かわらん
+"""
+import heapq
+
+
+class Heapq:
+    def __init__(self, _list=None):
+        if _list is not None:
+            self.heap = _list
+            heapq.heapify(self.heap)
+        else:
+            self.heap = []
+
+    def pop(self):
+        return heapq.heappop(self.heap)
 
     def push(self, x):
-        self.heap.append(x)
+        heapq.heappush(self.heap, x)
 
-        i = len(self.heap) - 1
-        while (i > 0):
-            pi = (i - 1) // 2
-            child = self.heap[i]
-            parent = self.heap[pi]
-            if parent > child:  # 入れ替える
-                self.heap[pi] = child
-                self.heap[i] = parent
-            i = pi
+
+class MyHeap:
+    def __init__(self, _list=None):
+        self.heap = []
+        if _list is not None:
+            for x in _list:
+                self.push(x)
 
     def pop(self):
         if len(self.heap) == 0:
             return
         elif len(self.heap) == 1:
             return self.heap.pop(0)
-        to_pop = self.heap[0]
+        retval = self.heap[0]
 
-        self.heap[0] = self.heap[-1]
-        self.heap.pop(-1)
+        self.heap[0] = self.heap.pop(-1)
 
-        i = 0
+        i_parent = 0
         while (True):
-            parent = self.heap[i]
-            i_child1 = i * 2 + 1
-            i_child2 = i * 2 + 2
-            if i_child1 < len(self.heap):
-                child1 = self.heap[i_child1]
+            is_updated = False
+            i_left = 2 * i_parent + 1
+            i_right = 2 * i_parent + 2
+
+            # 境界条件
+            if i_left >= len(self.heap):
+                break
+            elif i_right >= len(self.heap):
+                i_right = i_left
+
+            # 子供の小さいほうと交代
+            if self.heap[i_left] < self.heap[i_right]:
+                i_replace = i_left
             else:
-                break  # no more child
+                i_replace = i_right
 
-            if i_child2 < len(self.heap):
-                child2 = self.heap[i_child2]
-                if child1 < child2:
-                    i_child = i_child1
+            # 交代
+            if self.heap[i_replace] < self.heap[i_parent]:
+                is_updated = True
+                self.heap[i_parent], self.heap[i_replace] = self.heap[
+                    i_replace], self.heap[i_parent]
+                i_parent = i_replace
 
-                else:
-                    i_child = i_child2
+            if not is_updated:
+                break
 
-            else:
-                i_child = i_child1
+        return retval
 
-            child = self.heap[i_child]
-            if child < parent:  # swap
-                self.heap[i] = child
-                self.heap[i_child] = parent
-                i = i_child
+    def push(self, x):
+        self.heap.append(x)
 
-        return to_pop
+        i_self = len(self.heap) - 1
+
+        while (True):
+            is_updated = False
+            i_parent = (i_self - 1) // 2
+
+            # 境界
+            if i_parent < 0:
+                break
+
+            # 親が自分より小さければ交代
+            if self.heap[i_parent] > self.heap[i_self]:
+                is_updated = True
+
+                self.heap[i_parent], self.heap[i_self] = self.heap[
+                    i_self], self.heap[i_parent]
+
+                i_self = i_parent
+
+            if not is_updated:
+                break
+
+    def drain(self):
+        while (self.heap):
+            yield self.pop()
