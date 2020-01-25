@@ -11,6 +11,9 @@ logger = logging.getLogger(__name__)
 from collections import defaultdict
 # d = defaultdict(list)
 
+from itertools import combinations
+# comb = combinations(range(N), 2)
+
 
 def resolve():
     # S = [x for x in sys.stdin.readline().split()][0]  # 文字列 一つ
