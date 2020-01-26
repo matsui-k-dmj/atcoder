@@ -8,11 +8,16 @@ import logging
 logging.basicConfig(level=logging.DEBUG)
 
 logger = logging.getLogger(__name__)
-from collections import defaultdict
+
+# from collections import defaultdict
 # d = defaultdict(list)
 
-from itertools import combinations
+# from itertools import combinations
 # comb = combinations(range(N), 2)
+
+# 累積和
+# from itertools import accumulate
+# _list = list(accumulate(a_list)
 
 
 def resolve():

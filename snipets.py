@@ -61,13 +61,14 @@ def fib(n):
 # gcd
 from fractions import gcd
 
-# 累積和
+# 累積和, cmd
 from itertools import accumulate
 
 a_range = range(1, 11)
 b = list(accumulate(a_range))  # type: ignore
 print(a)
 print(b)
+
 
 class UnionFindTree(object):
     def __init__(self, N):
@@ -101,6 +102,7 @@ class UnionFindTree(object):
 
     def is_same(self, x, y):
         return self.find(x) == self.find(y)
+
 
 # ? の場所
 
