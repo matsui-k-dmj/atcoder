@@ -1,3 +1,5 @@
-print(100000, 1000000000)
-for i in range(100000):
-    print(i + 1)
+N = 10**3
+M = 10**3
+print(N, M)
+for i in range(M):
+    print(i + 1, 1.0, 1.0)
