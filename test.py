@@ -1,5 +1,4 @@
-N = 10**3
-M = 10**3
-print(N, M)
-for i in range(M):
-    print(i + 1, 1.0, 1.0)
+import random
+N = 10**6
+print(N)
+print(' '.join([str(random.randint(0, 10**5)) for i in range(N)]))
