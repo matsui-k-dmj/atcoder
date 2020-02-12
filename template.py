@@ -19,6 +19,11 @@ logger = logging.getLogger(__name__)
 # from itertools import accumulate
 # _list = list(accumulate(a_list)
 
+# from functools import lru_cache
+# @lru_cache(maxsize=None)
+# def setUp(self):
+#     dp.cache_clear()
+
 
 def resolve():
     # S = [x for x in sys.stdin.readline().split()][0]  # 文字列 一つ
