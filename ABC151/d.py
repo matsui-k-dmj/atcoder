@@ -1,4 +1,4 @@
-"""bfs
+"""bfs, グリッド
 """
 import sys
 sys.setrecursionlimit(4100000)

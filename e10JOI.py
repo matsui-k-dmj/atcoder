@@ -1,5 +1,5 @@
 """
-queue, deque, bfs
+queue, deque, bfs, グリッド
 """
 
 import sys

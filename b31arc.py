@@ -1,4 +1,4 @@
-"""grid, dfs
+"""グリッド, dfs
 """
 
 import sys
@@ -34,21 +34,6 @@ def resolve():
 
     print('NO')
 
-
-# def dfs(i, j, _X):
-#     if i + 1 < 10 and _X[i + 1][j] == LAND:
-#         _X[i + 1][j] = SEA
-#         _X = dfs(i + 1, j, _X)
-#     if i - 1 >= 0 and _X[i - 1][j] == LAND:
-#         _X[i - 1][j] = SEA
-#         _X = dfs(i - 1, j, _X)
-#     if j + 1 < 10 and _X[i][j + 1] == LAND:
-#         _X[i][j + 1] = SEA
-#         _X = dfs(i, j + 1, _X)
-#     if j - 1 >= 0 and _X[i][j - 1] == LAND:
-#         _X[i][j - 1] = SEA
-#         _X = dfs(i, j - 1, _X)
-#     return _X
 
 I_MIN = 0
 I_MAX = 9
