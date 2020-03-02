@@ -109,3 +109,13 @@ class UnionFindTree(object):
 import re
 p = re.compile(r'\?')
 q_index_list = [m.span()[0] for m in p.finditer('aa?82?')]
+
+# from collections import defaultdict
+# d = defaultdict(list)
+
+# from itertools import combinations
+# comb = combinations(range(N), 2)
+
+# 累積和
+# from itertools import accumulate
+# _list = list(accumulate(a_list)

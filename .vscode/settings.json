@@ -2,6 +2,7 @@
     "python.pythonPath": "/home/matsui-k/miniconda3/envs/py343/bin/python",
     "favorites.resources": [
         "template.py",
-        "Template"
+        "Template",
+        "snipets.py"
     ]
 }

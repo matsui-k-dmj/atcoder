@@ -40,6 +40,12 @@ class SegTree:
         self.tree = [self.default for _ in range(2 * self.n - 1)]
 
     def update(self, i, x=1):
+        """場所i に 1を足す
+        
+        Args:
+            i ([type]): [description]
+            x (int, optional): [description]. Defaults to 1.
+        """
         i = i + self.n - 1
         self.tree[i] += x
 
@@ -50,27 +56,27 @@ class SegTree:
             r = self.tree[i * 2 + 2]
             self.tree[i] = l + r
 
-    def query(self,
-              i_query_start,
-              i_query_end,
-              i_parent=0,
-              i_parent_start=0,
-              i_parent_end=None):
+    def query(
+        self,
+        i_query_start,
+        i_query_end,  # ex
+        i_parent=0,
+        i_parent_start=0,
+        i_parent_end=None  # ex
+    ):
         if i_parent_end is None:
             i_parent_end = self.n
 
-        if i_parent > self.n - 1:
-            return self.default
         if (i_query_end <= i_parent_start
-                or i_parent_end < i_query_start):  # クエリとレンジが重ならない
+                or i_parent_end <= i_query_start):  # クエリとレンジが重ならない
             return self.default
         elif (i_query_start <= i_parent_start
               and i_parent_end <= i_query_end):  # クエリがレンジを完全に含む
             return self.tree[i_parent]
         else:
-            return self.query(i_parent_start, i_query_end, 2 * i_parent + 1,
+            return self.query(i_query_start, i_query_end, 2 * i_parent + 1,
                            i_parent_start, (i_parent_start + i_parent_end) // 2) + \
-                self.query(i_parent_start, i_query_end, 2 * i_parent + 2,
+                self.query(i_query_start, i_query_end, 2 * i_parent + 2,
                            (i_parent_start + i_parent_end) // 2, i_parent_end)
 
 

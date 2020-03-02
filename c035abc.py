@@ -29,6 +29,11 @@ logger = logging.getLogger(__name__)
 
 
 class SegTree:
+    """区間に対する加算。区間全体を含む加算はノードでもっておいて後で足す。このやり方ならimos法使うべき
+    
+    Returns:
+        [type]: [description]
+    """
     def __init__(self, n):
 
         # 簡単のために要素数を2のべき乗にしておく

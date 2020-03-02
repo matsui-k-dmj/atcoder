@@ -23,6 +23,11 @@ logger = logging.getLogger(__name__)
 
 
 class SegTree:
+    """RMQ
+    
+    Returns:
+        [type]: [description]
+    """
     def __init__(self, h_list):
 
         # 簡単のために要素数を2のべき乗にしておく
@@ -45,29 +50,29 @@ class SegTree:
             i = (i - 1) // 2
             self.tree[i] = min(self.tree[i * 2 + 1], self.tree[i * 2 + 2])
 
-    def query(self,
-              i_query_start,
-              i_query_end,
-              i_parent=0,
-              i_parent_start=0,
-              i_parent_end=None):
-        if i_parent_end is None:
+    def query(
+        self,
+        i_query_start,
+        i_query_end,  # exclusive
+        i_parent=0,
+        i_parent_start=0,
+        i_parent_end=None  # exclusive
+    ):
+        if i_parent_end is None:  # i_parent_end の 初期値
             i_parent_end = self.n
 
-        if i_parent > self.n - 1:
-            return 10**10
         if (i_query_end <= i_parent_start
-                or i_parent_end < i_query_start):  # クエリとレンジが重ならない
+                or i_parent_end <= i_query_start):  # クエリとレンジが重ならない
             return 10**10
         elif (i_query_start <= i_parent_start
               and i_parent_end <= i_query_end):  # クエリがレンジを完全に含む
             return self.tree[i_parent]
         else:  # 子供のminを返す
             return min(
-                self.query(i_parent_start, i_query_end, 2 * i_parent + 1,
+                self.query(i_query_start, i_query_end, 2 * i_parent + 1,
                            i_parent_start,
                            (i_parent_start + i_parent_end) // 2),
-                self.query(i_parent_start, i_query_end, 2 * i_parent + 2,
+                self.query(i_query_start, i_query_end, 2 * i_parent + 2,
                            (i_parent_start + i_parent_end) // 2, i_parent_end))
 
 
@@ -82,9 +87,8 @@ def resolve():
     # grid = [[int(x) for x in sys.stdin.readline().split()]
     #         for _ in range(N)]  # int grid
     seg_tree = SegTree(h_list)
-    logger.debug('{}'.format([seg_tree.tree]))
 
-    print(seg_tree.query(S, T, 0, 0, seg_tree.n))
+    print(seg_tree.query(S, T))
 
 
 if __name__ == "__main__":
@@ -98,8 +102,8 @@ import sys
 from io import StringIO
 import unittest
 
-Seg
-Segase):
+
+class TestClass(unittest.TestCase):
     def assertIO(self, input, output):
         stdout, stdin = sys.stdout, sys.stdin
         sys.stdout, sys.stdin = StringIO(), StringIO(input)
@@ -110,22 +114,25 @@ Segase):
         self.assertEqual(out, output)
 
     def test_入力例_1(self):
-        input = """8 1 4
-5 3 7 9 6 4 1 2
-        """
-        output = """3"""
+        input = """9 0 1
+1 2 3 4 1 2 3 4 0"""
+        output = """1"""
         self.assertIO(input, output)
 
     def test_入力例_2(self):
-        input = """8 0 6
-5 3 7 9 6 4 1 2
-        """
-        output = """3"""
+        input = """9 1 4
+1 2 3 4 1 2 3 4 0"""
+        output = """2"""
         self.assertIO(input, output)
 
     def test_入力例_3(self):
-        input = """9 2 8
-5 3 7 9 6 4 1 2 4
-        """
-        output = """1"""
+        input = """9 8 9
+1 2 3 4 1 2 3 4 0"""
+        output = """0"""
+        self.assertIO(input, output)
+
+    def test_入力例_4(self):
+        input = """9 1 9
+1 2 3 4 1 2 3 4 0"""
+        output = """0"""
         self.assertIO(input, output)
