@@ -15,13 +15,17 @@ class Bitset:
         self.set = self.set & ~(1 << i)
 
     def find(self, i):
-        return (self.set >> i) & i
+        return (self.set >> i) & 1
 
     def union(self, a_set):
-        self.set = self.set | a_set.set
+        bs = Bitset()
+        bs.set = self.set | a_set.set
+        return bs
 
     def intersect(self, a_set):
-        self.set = self.set & a_set.set
+        bs = Bitset()
+        bs.set = self.set & a_set.set
+        return bs
 
     def enumerate(self):
         x = self.set & -self.set
