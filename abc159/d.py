@@ -9,47 +9,32 @@ logging.basicConfig(level=logging.DEBUG)
 
 logger = logging.getLogger(__name__)
 
-# from collections import defaultdict
-# d = defaultdict(list)
-
-# from itertools import combinations
-# comb = combinations(range(N), 2)
-
-# 累積和
-# from itertools import accumulate
-# _list = list(accumulate(a_list)
+from collections import Counter
 
 
 def resolve():
-    global N, K, grid
     # S = [x for x in sys.stdin.readline().split()][0]  # 文字列 一つ
-    # N = [int(x) for x in sys.stdin.readline().split()][0]  # int 一つ
-    N, K = [int(x) for x in sys.stdin.readline().split()]  # 複数int
-    # h_list = [int(x) for x in sys.stdin.readline().split()]  # 複数int
+    N = [int(x) for x in sys.stdin.readline().split()][0]  # int 一つ
+    # N, D = [int(x) for x in sys.stdin.readline().split()]  # 複数int
+    a_list = [int(x) for x in sys.stdin.readline().split()]  # 複数int
 
     # grid = [list(sys.stdin.readline().split()[0]) for _ in range(N)]  # 文字列grid
     # v_list = [int(sys.stdin.readline().split()[0]) for _ in range(N)]
-    grid = [[int(x) for x in sys.stdin.readline().split()]
-            for _ in range(N)]  # int grid
+    # grid = [[int(x) for x in sys.stdin.readline().split()]
+    #         for _ in range(N)]  # int grid
 
     logger.debug('{}'.format([]))
 
-    lower = 0
-    upper = 100
+    counts = Counter(a_list)
 
-    for _ in range(30):
-        middle = (lower + upper) / 2
-        if C(middle):
-            lower = middle
-        else:
-            upper = middle
+    retval = 0
+    for a, c in counts.items():
+        retval += int(c * (c - 1) / 2)
 
-    print(lower)
-
-
-def C(x):
-    global N, K, grid
-    return 0 <= sum(sorted([w * (p - x) for w, p in grid], reverse=True)[:K])
+    for k in range(N):
+        to_remove = a_list[k]
+        c = counts[to_remove]
+        print(retval - c * (c - 1) // 2 + (c - 1) * (c - 2) // 2)
 
 
 if __name__ == "__main__":
@@ -74,16 +59,44 @@ class TestClass(unittest.TestCase):
         sys.stdout, sys.stdin = stdout, stdin
         self.assertEqual(out, output)
 
-    def test_入力例1(self):
-        input = """3 2
-100 15
-300 20
-200 30"""
-        output = """25.000000000"""
+    def test_入力例_1(self):
+        input = """5
+1 1 2 1 2"""
+        output = """2
+2
+3
+2
+3"""
         self.assertIO(input, output)
 
-    def test_入力例2(self):
-        input = """1 1
-1 100"""
-        output = """100"""
+    def test_入力例_2(self):
+        input = """4
+1 2 3 4"""
+        output = """0
+0
+0
+0"""
+        self.assertIO(input, output)
+
+    def test_入力例_3(self):
+        input = """5
+3 3 3 3 3"""
+        output = """6
+6
+6
+6
+6"""
+        self.assertIO(input, output)
+
+    def test_入力例_4(self):
+        input = """8
+1 2 1 4 2 1 4 1"""
+        output = """5
+7
+5
+7
+7
+5
+7
+5"""
         self.assertIO(input, output)

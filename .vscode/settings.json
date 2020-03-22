@@ -1,8 +1,11 @@
 {
-    "python.pythonPath": "/home/matsui-k/miniconda3/envs/py343/bin/python",
+    "python.pythonPath": "/home/matsui-k/miniconda3/bin/python",
     "favorites.resources": [
         "template.py",
         "Template",
         "snipets.py"
-    ]
+    ],
+    "python.linting.pylintEnabled": false,
+    "python.linting.mypyEnabled": true,
+    "python.formatting.provider": "yapf",
 }
