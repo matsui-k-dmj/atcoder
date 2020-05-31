@@ -5,46 +5,11 @@ import math
 
 import logging
 
+from collections import defaultdict
+
 logging.basicConfig(level=logging.DEBUG)
 
 logger = logging.getLogger(__name__)
-
-from collections import defaultdict
-d: defaultdict = defaultdict(list)
-
-import operator
-from functools import reduce
-
-
-def prod(iterable):
-    return reduce(operator.mul, iterable, 1)
-
-
-# from itertools import combinations
-# comb = combinations(range(N), 2)
-
-# 累積和
-# from itertools import accumulate
-# _list = list(accumulate(a_list)
-
-# from functools import lru_cache
-# @lru_cache(maxsize=None)
-# def setUp(self):
-#     dp.cache_clear()
-
-
-def divisor(n: int):
-    """1からsqrt(n)までの約数を全部返す
-    
-    Args:
-        n (int): [description]
-    
-    Yields:
-        int: [description]
-    """
-    for i in range(1, math.ceil(math.sqrt(n)) + 1):
-        if n % i == 0:
-            yield i
 
 
 def prime_factor(n: int):
@@ -69,16 +34,18 @@ def prime_factor(n: int):
     return res
 
 
-def flatten_key_count(d):
-    """keyとcountのdictをflattenする
-    
-    Args:
-        d (dict[any, int]): [description]
-    
-    Returns:
-        List[any]: [description]
-    """
-    return sum([[k for _ in range(d[k])] for k in d.keys()], [])
+def count(n):
+    i = 0
+    a = 1
+    while (True):
+        n = n - a
+        if n >= 0:
+            i += 1
+            a += 1
+        else:
+            break
+
+    return i
 
 
 def resolve():
@@ -92,22 +59,17 @@ def resolve():
     # grid = [[int(x) for x in sys.stdin.readline().split()]
     #         for _ in range(N)]  # int grid
 
-    logger.debug('{}'.format([]))
+    factors = prime_factor(N)
 
-    if N == 1:
-        print(1)
-        return
+    logger.debug('{}'.format([factors]))
 
-    _min = 10**10
-    for a in divisor(N):
-        b = N // a
+    ret = 0
 
-        if a > b:
-            _min = min(_min, len(str(a)))
-        else:
-            _min = min(_min, len(str(b)))
+    for key, value in factors.items():
+        if key != 1:
+            ret += count(value)
 
-    print(_min)
+    print(ret)
 
 
 if __name__ == "__main__":
@@ -133,16 +95,27 @@ class TestClass(unittest.TestCase):
         self.assertEqual(out, output)
 
     def test_入力例_1(self):
-        input = """10000"""
+        input = """24"""
         output = """3"""
         self.assertIO(input, output)
 
     def test_入力例_2(self):
-        input = """1000003"""
-        output = """7"""
+        input = """1"""
+        output = """0"""
         self.assertIO(input, output)
 
     def test_入力例_3(self):
-        input = """9876543210"""
-        output = """6"""
+        input = """64"""
+        output = """3"""
         self.assertIO(input, output)
+
+    def test_入力例_4(self):
+        input = """1000000007"""
+        output = """1"""
+        self.assertIO(input, output)
+
+    def test_入力例_5(self):
+        input = """997764507000"""
+        output = """7"""
+        self.assertIO(input, output)
+
