@@ -6,7 +6,6 @@ import sys
 sys.setrecursionlimit(4100000)
 
 import math
-import fractions
 from functools import reduce
 
 import logging
@@ -17,7 +16,7 @@ logger = logging.getLogger(__name__)
 
 
 def lcm_base(x, y):
-    return (x * y) // fractions.gcd(x, y)
+    return (x * y) // math.gcd(x, y)
 
 
 def lcm(*numbers):

@@ -59,7 +59,7 @@ def fib(n):
 
 
 # gcd
-from fractions import gcd
+from math import gcd
 
 # 累積和, cmd
 from itertools import accumulate
