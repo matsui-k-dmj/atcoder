@@ -1,25 +1,43 @@
 # atcoder
 
 - [atcoder](#atcoder)
-  - [環境](#%e7%92%b0%e5%a2%83)
-  - [オーダー](#%e3%82%aa%e3%83%bc%e3%83%80%e3%83%bc)
-  - [便利](#%e4%be%bf%e5%88%a9)
-  - [Python の list などのオーダー](#python-%e3%81%ae-list-%e3%81%aa%e3%81%a9%e3%81%ae%e3%82%aa%e3%83%bc%e3%83%80%e3%83%bc)
-  - [pypy じゃだめらしい](#pypy-%e3%81%98%e3%82%83%e3%81%a0%e3%82%81%e3%82%89%e3%81%97%e3%81%84)
-  - [定数倍高速化](#%e5%ae%9a%e6%95%b0%e5%80%8d%e9%ab%98%e9%80%9f%e5%8c%96)
-  - [2 重ループ](#2-%e9%87%8d%e3%83%ab%e3%83%bc%e3%83%97)
+  - [やり方](#やり方)
+  - [Python Tips](#python-tips)
+    - [オーダー](#オーダー)
+    - [便利](#便利)
+    - [Python の list などのオーダー](#python-の-list-などのオーダー)
+    - [pypy では遅いもの](#pypy-では遅いもの)
+    - [定数倍高速化](#定数倍高速化)
+    - [2 重ループ](#2-重ループ)
 
-## 環境
+## やり方
 
-conda activate atcoder
+- 環境
+  `poetry shell`
 
-pypy3 nanka.py
+- コンペ前  
+  Template フォルダをコピペして rename する
+  そのフォルダに入っとく
 
-## オーダー
+- テスト  
+  chrome 拡張 Atcoder Unit Test で 貼り付ける.  
+  AtCoder Unit Test で自動生成できる, 最後の unittest.main は消す  
+  python -m unittest template/template.py  
+  pypy3 -m unittest template/template.py
+
+- プロファイリング  
+  テスト用のデータは adhok に作る python D_data.py > D_data.txt とか  
+   関数に @profile デコレータをつける。終わったらコメントアウトする  
+   kernprof -l D.py < test_D_input_4.txt  
+   python -m line_profiler D.py.lprof
+
+## Python Tips
+
+### オーダー
 
 Python で乗るのは 10\*\*6 くらいまで
 
-## 便利
+### 便利
 
 - 標準入力にはリダイレクトで渡せる
 
@@ -27,13 +45,13 @@ Python で乗るのは 10\*\*6 くらいまで
 python spam.py < sample.txt
 ```
 
-## Python の list などのオーダー
+### Python の list などのオーダー
 
 - del は o(n)なので使わない, 新しく配列作ったほうが速い
 - in も list では o(n), set, dict に直す
 -
 
-## pypy じゃだめらしい
+### pypy では遅いもの
 
 - 再帰
 - dict
@@ -41,7 +59,7 @@ python spam.py < sample.txt
 - deque
 - 内包表記　(ベタ書きの方が速いらしい)
 
-## 定数倍高速化
+### 定数倍高速化
 
 - enumerate
 - 小さいループを外に
@@ -54,7 +72,7 @@ for i in range(n):
     r_append(1)
 ```
 
-## 2 重ループ
+### 2 重ループ
 
 - flag を使う: こっちのほうが絶対わかりやすい
 
