@@ -1,4 +1,5 @@
 import sys
+
 sys.setrecursionlimit(4100000)
 
 import math
@@ -6,7 +7,6 @@ import math
 import logging
 
 logging.basicConfig(level=logging.DEBUG)
-
 logger = logging.getLogger(__name__)
 
 
@@ -18,7 +18,7 @@ def resolve():
     # grid = [[int(x) for x in sys.stdin.readline().split()]
     #         for _ in range(N)]  # int grid
 
-    logger.debug('{}'.format([]))
+    logger.debug("{}".format([]))
 
 
 if __name__ == "__main__":

@@ -15,21 +15,28 @@
 - 環境
   `poetry shell`
 
-- コンペ前  
-  Template フォルダをコピペして rename する
-  そのフォルダに入っとく
+- コンペ前
 
-- テスト  
-  chrome 拡張 Atcoder Unit Test で 貼り付ける.  
-  AtCoder Unit Test で自動生成できる, 最後の unittest.main は消す  
-  python -m unittest template/template.py  
-  pypy3 -m unittest template/template.py
+  - Template フォルダをコピペして rename する
+  - そのフォルダに入っとく
 
-- プロファイリング  
-  テスト用のデータは adhok に作る python D_data.py > D_data.txt とか  
-   関数に @profile デコレータをつける。終わったらコメントアウトする  
-   kernprof -l D.py < test_D_input_4.txt  
-   python -m line_profiler D.py.lprof
+- テスト
+
+  - chrome 拡張 Atcoder Unit Test で 貼り付ける.
+  - AtCoder Unit Test で自動生成できる, 最後の unittest.main は消す
+  - python -m unittest template/template.py
+  - pypy3 -m unittest template/template.py
+
+- プロファイリング
+
+  - テスト用のデータは adhok に作る python D_data.py > D_data.txt とか
+  - 関数に @profile デコレータをつける。終わったらコメントアウトする
+  - kernprof -l D.py < test_D_input_4.txt
+  - python -m line_profiler D.py.lprof
+
+- 復習
+  - 使ったアルゴリズムを docstrings に書いて、後でググれるようにする
+  - もし関数化したほうが良さそうなら、Algo に入れる
 
 ## Python Tips
 
