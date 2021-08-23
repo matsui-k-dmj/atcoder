@@ -14,7 +14,7 @@
 
 - 実行
 
-  - poetry run python D.py
+  - source .venv/Scripts/activate
 
 - コンペ前
 
@@ -25,15 +25,15 @@
 
   - chrome 拡張 Atcoder Unit Test で 貼り付ける.
   - AtCoder Unit Test で自動生成できる, 最後の unittest.main は消す
-  - poetry run python -m unittest template/template.py
+  - python -m unittest template/template.py
   - pypy3 -m unittest template/template.py
 
 - プロファイリング
 
   - テスト用のデータは adhok に作る python D_data.py > D_data.txt とか
   - 関数に @profile デコレータをつける。終わったらコメントアウトする
-  - poetry run kernprof -l D.py < test_D_input_4.txt
-  - poetry run python -m line_profiler D.py.lprof
+  - kernprof -l D.py < test_D_input_4.txt
+  - python -m line_profiler D.py.lprof
 
 - 復習
   - 使ったアルゴリズムを docstrings に書いて、後でググれるようにする
