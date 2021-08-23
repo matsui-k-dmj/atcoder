@@ -4,7 +4,7 @@
   - [やり方](#やり方)
   - [Python Tips](#python-tips)
     - [オーダー](#オーダー)
-    - [便利](#便利)
+    - [入力](#入力)
     - [Python の list などのオーダー](#python-の-list-などのオーダー)
     - [pypy では遅いもの](#pypy-では遅いもの)
     - [定数倍高速化](#定数倍高速化)
@@ -12,8 +12,9 @@
 
 ## やり方
 
-- 環境
-  `poetry shell`
+- 実行
+
+  - poetry run python D.py
 
 - コンペ前
 
@@ -24,15 +25,15 @@
 
   - chrome 拡張 Atcoder Unit Test で 貼り付ける.
   - AtCoder Unit Test で自動生成できる, 最後の unittest.main は消す
-  - python -m unittest template/template.py
+  - poetry run python -m unittest template/template.py
   - pypy3 -m unittest template/template.py
 
 - プロファイリング
 
   - テスト用のデータは adhok に作る python D_data.py > D_data.txt とか
   - 関数に @profile デコレータをつける。終わったらコメントアウトする
-  - kernprof -l D.py < test_D_input_4.txt
-  - python -m line_profiler D.py.lprof
+  - poetry run kernprof -l D.py < test_D_input_4.txt
+  - poetry run python -m line_profiler D.py.lprof
 
 - 復習
   - 使ったアルゴリズムを docstrings に書いて、後でググれるようにする
@@ -44,7 +45,7 @@
 
 Python で乗るのは 10\*\*6 くらいまで
 
-### 便利
+### 入力
 
 - 標準入力にはリダイレクトで渡せる
 
@@ -52,11 +53,16 @@ Python で乗るのは 10\*\*6 くらいまで
 python spam.py < sample.txt
 ```
 
+- stdin.readline
+
+input に比べて速い。
+sys.stdin.readline は最後に改行文字 \n が入る  
+split は スペースで区切るのと、\n を削除する. スペースが無い場合は要素 1 個のリストを返す
+
 ### Python の list などのオーダー
 
 - del は o(n)なので使わない, 新しく配列作ったほうが速い
 - in も list では o(n), set, dict に直す
--
 
 ### pypy では遅いもの
 

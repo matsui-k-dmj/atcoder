@@ -1,5 +1,7 @@
 import sys
+
 sys.setrecursionlimit(4100000)
+readline = sys.stdin.readline
 
 import math
 
@@ -11,16 +13,17 @@ logger = logging.getLogger(__name__)
 
 
 def resolve():
-    # S = [x for x in sys.stdin.readline().split()][0]  # 文字列 一つ
-    # N = [int(x) for x in sys.stdin.readline().split()][0]  # int 一つ
-    # N, D = [int(x) for x in sys.stdin.readline().split()]  # 複数int
-    # h_list = [int(x) for x in sys.stdin.readline().split()]  # 複数int
-    # grid = [list(sys.stdin.readline().split()[0]) for _ in range(N)]  # 文字列grid
-    # v_list = [int(sys.stdin.readline().split()[0]) for _ in range(N)]
-    # grid = [[int(x) for x in sys.stdin.readline().split()]
-    #         for _ in range(N)]  # int grid
+    # S = readline().split()[0]  # 文字列 一つ
+    # N = int(readline().split()[0])  # int 一つ
+    # N, D = [int(x) for x in readline().split()]  # 複数int
+    # h_list = [int(x) for x in readline().split()]  # 複数int
+    # grid = [list(readline().split()[0]) for _ in range(N)]  # 文字列grid
+    # v_list = [int(readline().split()[0]) for _ in range(N)]  # 縦方向の複数int
+    # grid = [
+    #     [int(x) for x in readline().split()] for _ in range(N)
+    # ]  # int grid
 
-    logger.debug('{}'.format([]))
+    logger.debug("{}".format([]))
 
 
 if __name__ == "__main__":
