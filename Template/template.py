@@ -1,6 +1,6 @@
 import sys
 
-# sys.setrecursionlimit(4100000) # pypy3は再起苦手
+# sys.setrecursionlimit(4100000)
 
 import math
 
