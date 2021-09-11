@@ -2,6 +2,7 @@
 """
 
 import sys
+
 sys.setrecursionlimit(4100000)
 
 import math
@@ -27,13 +28,13 @@ import bisect
 from typing import List
 
 
-def lis(N: int, h_list: List[int], INF=10**10) -> int:
+def lis(N: int, h_list: List[int], INF=10 ** 10) -> int:
     dp = [INF for _ in range(N)]
 
     for j in range(N):
         h = h_list[j]
         i = bisect.bisect_left(dp, h)
-        dp[i] = h  # これがO(N)なので, オーダーはO(N**2)
+        dp[i] = h
 
     i = bisect.bisect_left(dp, INF)
 
@@ -51,7 +52,7 @@ def resolve():
     # grid = [[int(x) for x in sys.stdin.readline().split()]
     #         for _ in range(N)]  # int grid
 
-    logger.debug('{}'.format([]))
+    logger.debug("{}".format([]))
 
     print(lis(N, h_list))
 
