@@ -2,7 +2,8 @@
 """
 
 import sys
-sys.setrecursionlimit(4100000)
+
+# sys.setrecursionlimit(4100000)
 
 import logging
 
@@ -12,38 +13,42 @@ logger = logging.getLogger(__name__)
 
 from heapq import heappush, heappop
 
-def resolve():
-    N, M = [int(x) for x in sys.stdin.readline().split()]
-    s, t = [int(x) for x in sys.stdin.readline().split()]
-    edge_list = [[] for _ in range(N)]
 
-    s = s-1
-    t = t-1
+def dijkstra(edge_list, N, s):
+    """sからの距離を返す
 
-    for _ in range(M):
-        u, v, w = [int(x) for x in sys.stdin.readline().split()]
-        edge_list[u-1].append((v-1, w))
-        edge_list[v-1].append((u-1, w))
+    Args:
+        edge_list (list): list of (v, w)
+        N (int): number of vertexes
+        s (int): index of start
 
-    dist = [float('inf')] * N
+    Returns:
+        list: total cost from the start
+    """
+    dist = [float("inf")] * N
+    dist[s] = 0
 
     class PriorityQueue(object):
         def __init__(self):
             self.queue = []
+
         def push(self, value):
             heappush(self.queue, value)
+
         def pop(self):
             return heappop(self.queue)
+
         def __len__(self):
             return len(self.queue)
+
         def __contains__(self, item):
             return item in self.queue
 
     queue = PriorityQueue()
 
-    queue.push((0, s)) # 距離, index
+    queue.push((0, s))  # 距離, index
 
-    while(len(queue)):
+    while len(queue):
         min_vertex = queue.pop()
         dist_current, i_current = min_vertex
         if dist[i_current] < dist_current:
@@ -54,7 +59,25 @@ def resolve():
                 dist[i_to] = new_dist
                 queue.push((new_dist, i_to))
 
+    return dist
+
+
+def resolve():
+    N, M = [int(x) for x in sys.stdin.readline().split()]
+    s, t = [int(x) for x in sys.stdin.readline().split()]
+    edge_list = [[] for _ in range(N)]
+
+    s = s - 1
+    t = t - 1
+
+    for _ in range(M):
+        u, v, w = [int(x) for x in sys.stdin.readline().split()]
+        edge_list[u - 1].append((v - 1, w))
+        edge_list[v - 1].append((u - 1, w))
+
+    dist = dijkstra(edge_list, N, s)
     print(dist[t])
+
 
 if __name__ == "__main__":
     resolve()
@@ -62,6 +85,7 @@ if __name__ == "__main__":
 import sys
 from io import StringIO
 import unittest
+
 
 class TestClass(unittest.TestCase):
     def assertIO(self, input, output):
@@ -72,6 +96,7 @@ class TestClass(unittest.TestCase):
         out = sys.stdout.read()[:-1]
         sys.stdout, sys.stdin = stdout, stdin
         self.assertEqual(out, output)
+
     def test_入力例_1(self):
         input = """2 1
 1 2
