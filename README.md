@@ -14,7 +14,7 @@
 
 - 実行
 
-  - source .venv/Scripts/activate
+source .venv/Scripts/activate
 
 - コンペ前
 
