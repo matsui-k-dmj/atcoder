@@ -121,6 +121,7 @@ def factorial(n, start=1):
 
 def modinv(a):
     """一般的な a の逆元 (ax = 1 mod MOD を 満たす x)
+    MOD がなんでも成り立つ
     O(log n)
 
     Args:
@@ -142,7 +143,7 @@ def modinv(a):
 
 
 # 逆元: MODが素数でxを割り切らないとき(MODがデカい素数の場合など)、フェルマーの小定理によって
-# 無視できるくらい速い
+# O(log MOD) 無視できるくらい速い
 modinv = lambda n: pow(n, MOD - 2, MOD)
 
 

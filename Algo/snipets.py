@@ -37,13 +37,13 @@ def ceil_int(a, devider):
 
 # 配列の初期化
 N0, N1, N2, N3 = 5, 6, 8, 9
-a = [0] * N0
+vec = [0] * N0
 
-b = [[0] * N1 for i in range(N0)]
+mat = [[0] * N1 for i in range(N0)]
 
-c = [[[0] * N2 for i in range(N1)] for j in range(N0)]
+tensor3 = [[[0] * N2 for i in range(N1)] for j in range(N0)]
 
-d = [[[[0] * N3 for k in range(N2)] for i in range(N1)] for j in range(N0)]
+tensor4 = [[[[0] * N3 for k in range(N2)] for i in range(N1)] for j in range(N0)]
 
 
 # gcd
@@ -64,3 +64,12 @@ import re
 
 p = re.compile(r"\?")
 q_index_list = [m.span()[0] for m in p.finditer("aa?82?")]
+
+# グリッド の for 文
+
+# delta_list = [(1, 0), (0, -1), (-1, 0), (0, 1)]
+# for delta in delta_list:
+#     new_i = i + delta[0]
+#     new_j = j + delta[1]
+#     if 0 <= new_i < H and 0 <= new_j < W:
+#         grid[new_i][new_j]

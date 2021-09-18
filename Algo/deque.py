@@ -5,7 +5,7 @@ queue = deque()
 queue.append(0)
 queue.append(1)
 
-print(queue.popleft())
+print(queue.popleft())  # popだとスタックになってしまう
 
 
 # Stack, スタック
