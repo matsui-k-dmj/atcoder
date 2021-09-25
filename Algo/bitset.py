@@ -1,34 +1,43 @@
 import math
 
 
-class Bitset:
-    def __init__(self, a_list=None):
-        self.set = 0
-        if a_list is not None:
-            for a in a_list:
-                self.add(a)
+# 空集合
+s = 0
+n = 10
+i = 3
+s2 = 2
 
-    def add(self, i):
-        self.set = self.set | (1 << i)
+# sにiを追加
+s | (1 << i)
 
-    def remove(self, i):
-        self.set = self.set & ~(1 << i)
+# sからiを除外
+s & ~(1 << i)
 
-    def find(self, i):
-        return (self.set >> i) & 1
+# sにiが入ってるか
+(s >> i) & 1
 
-    def union(self, a_set):
-        bs = Bitset()
-        bs.set = self.set | a_set.set
-        return bs
+# union
+s | s2
 
-    def intersect(self, a_set):
-        bs = Bitset()
-        bs.set = self.set & a_set.set
-        return bs
+# intersection
+s & s2
 
-    def enumerate(self):
-        x = self.set & -self.set
-        while (x):
-            yield int(math.log2(x))
-            x = self.set & (~self.set + (x << 1))
+# size
+bin(s).count("1")
+
+
+def enumerate(s):
+    x = s & -s
+    while x:
+        yield int(math.log2(x))
+        x = s & (~s + (x << 1))
+
+
+# n要素全部が入ってる集合
+(1 << n) - 1
+
+# n要素の集合の空集合から小さい順に列挙
+range(1 << n)
+
+# 全部が入ってる集合を除いて、大きい順の集合
+list(range((1 << n) - 1))[::-1]

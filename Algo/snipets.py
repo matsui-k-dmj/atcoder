@@ -57,6 +57,8 @@ b = list(accumulate(a_range))  # type: ignore
 print(a)
 print(b)
 
+# ? の数
+"aa?82?".count("?")
 
 # ? の場所
 
