@@ -1,5 +1,5 @@
 import sys
-# # sys.setrecursionlimit(4100000)
+# sys.setrecursionlimit(4100000)
 
 # import logging
 # logging.basicConfig(level=logging.DEBUG)
@@ -13,9 +13,17 @@ def resolve():
     # h_list = [int(x) for x in sys.stdin.readline().split()]  # 複数int
     # grid = [list(sys.stdin.readline().split()[0]) for _ in range(N)]  # 文字列grid
     # v_list = [int(sys.stdin.readline().split()[0]) for _ in range(N)]  # 縦方向の複数int
+    
     # grid = [
     #     [int(x) for x in sys.stdin.readline().split()] for _ in range(N)
     # ]  # int grid
+
+    # edge_list = [[] for _ in range(N)]
+    # for _ in range(M):
+    #     a, b = [int(x) - 1 for x in sys.stdin.readline().split()]
+    #     edge_list[a].append(b)
+    #     edge_list[b].append(a)
+
 
     # logger.debug("{}".format([]))
 
