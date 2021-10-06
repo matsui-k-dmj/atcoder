@@ -10,6 +10,8 @@ a_1 ~ a_i の 和を得る
 
 
 class Bit:
+    """1-indexなので注意"""
+
     def __init__(self, n):
         self.size = n
         self.tree = [0] * (n + 1)
@@ -41,6 +43,8 @@ class Bit:
 class FenwickTreeInjectable:
     def __init__(self, n, func=lambda x, y: x + y, identity_factory=lambda: 0):
         """
+        1-indexなので注意
+
         Fenwick木では、listやdictなどのオブジェクトを載せることもできる。
         その場合の注意点として、Pythonでは、オブジェクトを特に工夫無くコピーするとインスタンス自体が同じとなる。つまりどれか1つへの反映が他の全てに反映されてしまう。
 
@@ -48,6 +52,8 @@ class FenwickTreeInjectable:
 
         funcは結合法則と単位元の存在を満たせばよい
         funcはadd で idfが listなら、add(2, [534, 10]) とかできる
+
+
         """
         self.size = n
         self.tree = [identity_factory() for _ in range(n + 1)]

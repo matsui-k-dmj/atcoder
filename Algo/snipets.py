@@ -54,7 +54,7 @@ from itertools import accumulate
 
 a_range = range(1, 11)
 b = list(accumulate(a_range))  # type: ignore
-print(a)
+print(a_range)
 print(b)
 
 # ? の数
