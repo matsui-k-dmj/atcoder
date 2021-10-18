@@ -1,4 +1,5 @@
 """heapq使っても自作Heapと全然速度かわらん
+heapq は 最小値が前
 """
 import heapq
 
@@ -35,7 +36,7 @@ class MyHeap:
         self.heap[0] = self.heap.pop(-1)
 
         i_parent = 0
-        while (True):
+        while True:
             is_updated = False
             i_left = 2 * i_parent + 1
             i_right = 2 * i_parent + 2
@@ -55,8 +56,10 @@ class MyHeap:
             # 交代
             if self.heap[i_replace] < self.heap[i_parent]:
                 is_updated = True
-                self.heap[i_parent], self.heap[i_replace] = self.heap[
-                    i_replace], self.heap[i_parent]
+                self.heap[i_parent], self.heap[i_replace] = (
+                    self.heap[i_replace],
+                    self.heap[i_parent],
+                )
                 i_parent = i_replace
 
             if not is_updated:
@@ -69,7 +72,7 @@ class MyHeap:
 
         i_self = len(self.heap) - 1
 
-        while (True):
+        while True:
             is_updated = False
             i_parent = (i_self - 1) // 2
 
@@ -81,8 +84,10 @@ class MyHeap:
             if self.heap[i_parent] > self.heap[i_self]:
                 is_updated = True
 
-                self.heap[i_parent], self.heap[i_self] = self.heap[
-                    i_self], self.heap[i_parent]
+                self.heap[i_parent], self.heap[i_self] = (
+                    self.heap[i_self],
+                    self.heap[i_parent],
+                )
 
                 i_self = i_parent
 
@@ -90,5 +95,5 @@ class MyHeap:
                 break
 
     def drain(self):
-        while (self.heap):
+        while self.heap:
             yield self.pop()
