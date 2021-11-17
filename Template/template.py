@@ -5,6 +5,7 @@ import logging
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
 
+import math
 
 def resolve():
     # S = sys.stdin.readline().split()[0]  # 文字列 一つ
