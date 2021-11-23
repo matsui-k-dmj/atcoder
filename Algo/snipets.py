@@ -21,25 +21,13 @@ def count_raw_char(s, char):
     return max_len
 
 
-def ceil_int(a, devider):
-    """
-    floor は a // devider でいい。
-    math.floor(a / divedier)　だとオーバーフローしちゃう。
-    """
-
-    if a % devider > 0:
-        a_ceil = a // devider + 1
-    else:
-        a_ceil = a // devider
-
-    return a_ceil
-
-
 # 配列の初期化
 N0, N1, N2, N3 = 5, 6, 8, 9
+H, W = 100, 100
+
 vec = [0] * N0
 
-mat = [[0] * N1 for i in range(N0)]
+mat = [[0] * W for i in range(H)]
 
 tensor3 = [[[0] * N2 for i in range(N1)] for j in range(N0)]
 
@@ -68,10 +56,13 @@ p = re.compile(r"\?")
 q_index_list = [m.span()[0] for m in p.finditer("aa?82?")]
 
 # グリッド の for 文
-
-# delta_list = [(1, 0), (0, -1), (-1, 0), (0, 1)]
-# for delta in delta_list:
-#     new_i = i + delta[0]
-#     new_j = j + delta[1]
-#     if 0 <= new_i < H and 0 <= new_j < W:
-#         grid[new_i][new_j]
+i = 0
+j = 0
+H, W = 100, 100
+grid = [[0] * W for i in range(H)]
+delta_list = [(1, 0), (0, -1), (-1, 0), (0, 1)]
+for delta in delta_list:
+    new_i = i + delta[0]
+    new_j = j + delta[1]
+    if 0 <= new_i < H and 0 <= new_j < W:
+        grid[new_i][new_j]
