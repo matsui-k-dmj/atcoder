@@ -1,5 +1,6 @@
 import sys
-# sys.setrecursionlimit(4100000)
+sys.setrecursionlimit(4200000)
+
 
 import logging
 logging.basicConfig(level=logging.DEBUG)
@@ -19,8 +20,8 @@ def resolve():
     #     [int(x) for x in sys.stdin.readline().split()] for _ in range(N)
     # ]  # int grid
 
-    # edge_list = [[] for _ in range(N)]
-    # for _ in range(M):
+    # edge_list = [[] for _ in range(N_VERTEXES)]
+    # for _ in range(M_EDGES):
     #     a, b = [int(x) - 1 for x in sys.stdin.readline().split()]
     #     edge_list[a].append(b)
     #     edge_list[b].append(a)

@@ -1,4 +1,6 @@
 """
+002 - Encyclopedia of Parentheses（★3） https://atcoder.jp/contests/typical90/tasks/typical90_b
+
 ()は2通りしかないので、bit全探索できる
 正しい()の条件は (と)の数が等しい、全てのi で そこまでの( の数のほうが多い
 
