@@ -1,3 +1,15 @@
+"""
+三角数 a_k = k * (k + 1) / 2 = 1辺に石をk個置いて三角形を敷き詰めたときの石の数。= 差分１の等差数列の和でもある。
+
+N以下の最大の三角数は
+k*(K+1)/2 <= N
+k**2 + k -2N <= 0
+式の公式から
+floor((-1 + sqrt(1 + 8N) )/ 2)
+
+まあO(sqrt(N))でも求めれる。
+"""
+
 import sys
 
 # sys.setrecursionlimit(4100000)
@@ -20,19 +32,20 @@ def resolve():
     def get_s(k):
         return (k * (k + 1)) // 2
 
-    string = ""
-    toggle = True
-    while True:
-        k = get_k(N)
-        string += "7" * k
-        s = get_s(k)
-        N = N - s
-        if N == 0:
-            break
-        string += "1" if toggle else "2"
-        toggle = not toggle
+    # 間違ってる。
+    # string = ""
+    # toggle = True
+    # while True:
+    #     k = get_k(N)
+    #     string += "7" * k
+    #     s = get_s(k)
+    #     N = N - s
+    #     if N == 0:
+    #         break
+    #     string += "1" if toggle else "2"
+    #     toggle = not toggle
 
-    print(string)
+    # print(string)
 
     # logger.debug("{}".format([]))
 
