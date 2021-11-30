@@ -1,5 +1,5 @@
 import sys
-sys.setrecursionlimit(4200000)
+# sys.setrecursionlimit(4200000)
 
 
 import logging
@@ -7,6 +7,9 @@ logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
 
 import math
+
+from collections import defaultdict
+
 
 def resolve():
     # S = sys.stdin.readline().split()[0]  # 文字列 一つ
