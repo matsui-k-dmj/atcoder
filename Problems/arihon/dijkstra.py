@@ -18,7 +18,7 @@ def dijkstra(edge_list, N, s):
     """sからの距離を返す
 
     Args:
-        edge_list (list): list of (v, w)
+        edge_list (list): list of (to, cost)
         N (int): number of vertexes
         s (int): index of start
 
