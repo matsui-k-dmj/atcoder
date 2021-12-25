@@ -14,13 +14,19 @@ s2 = 2
 s = 0
 
 # sにiを追加
-s | (1 << i)
+def add(s, i):
+    return s | (1 << i)
 
 # sからiを除外
-s & ~(1 << i)
+def remove(s, i):
+    return s & ~(1 << i)
 
 # sにiが入ってるか
-(s >> i) & 1
+def include(s, i):
+    return (s >> i) & 1
+
+def size(s):
+    return bin(s).count("1")
 
 # union
 s | s2
@@ -28,11 +34,10 @@ s | s2
 # intersection
 s & s2
 
-# size
-bin(s).count("1")
 
 
-def enumerate(s):
+# s の 要素 を列挙する (別に i でループすればいいやろ、、)
+def enumerate_factors(s):
     x = s & -s
     while x:
         yield int(math.log2(x))
@@ -42,6 +47,7 @@ def enumerate(s):
 # n要素全部が入ってる集合
 (1 << n) - 1
 
+# 普通に列挙すると、ある集合が出るまでにその部分集合はすでに出てきてるようになってる！すごい！
 # n要素の集合の部分集合の列挙
 range(1 << n)
 
