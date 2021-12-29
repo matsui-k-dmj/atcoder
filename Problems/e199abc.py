@@ -15,6 +15,8 @@ for i in range(N):
     if c:
         dp[s | {i}] += dp[s]
 で良い
+
+N = 18だと、2**N * N = 5 * 10**6 が限界。 2**N * N**2 = 8.5 * 10**7
 """
 
 import sys
