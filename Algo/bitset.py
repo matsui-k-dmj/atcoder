@@ -25,8 +25,18 @@ def remove(s, i):
 def include(s, i):
     return (s >> i) & 1
 
+### 遅いから注意!!! for s in range((1 << N) - 1): の直下で呼ぶべき
 def size(s):
     return bin(s).count("1")
+
+# i より小さい要素がすべて入った集合
+def get_lower(i):
+    return (1 << i) - 1
+
+# eq / lower
+get_lower(i+1)
+
+
 
 # union
 s | s2
@@ -51,5 +61,5 @@ def enumerate_factors(s):
 # n要素の集合の部分集合の列挙
 range(1 << n)
 
-# 全部が入ってる集合を除いた部分集合
+# 全部が入ってる集合を除いた部分集合の列挙
 range((1 << n) - 1)
