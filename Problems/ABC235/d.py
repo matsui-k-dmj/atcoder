@@ -1,3 +1,8 @@
+"""
+たまにやってしまうけどedge の コストが1のときはダイクストラなんかしなくていい。
+幅優先でvisitedだけ管理すればよい。
+"""
+
 import sys
 # sys.setrecursionlimit(4200000)
 
