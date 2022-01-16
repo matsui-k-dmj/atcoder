@@ -188,7 +188,7 @@ def comb(n, r):
 # O(n), max 10**6
 # 前処理
 MAX_SIZE = 10 ** 6  # nのmax
-fact = [None] * (MAX_SIZE + 1)
+fact = [0] * (MAX_SIZE + 1)
 fact[0] = fact[1] = 1
 for i in range(2, MAX_SIZE + 1):
     fact[i] = fact[i - 1] * i % MOD
