@@ -1,5 +1,7 @@
 # atcoder
 
+https://atcoder.jp/users/Kazhir
+
 - [atcoder](#atcoder)
   - [やり方](#やり方)
   - [Python Tips](#python-tips)
@@ -7,8 +9,6 @@
     - [入力](#入力)
     - [Python の list などのオーダー](#python-の-list-などのオーダー)
     - [pypy では遅いもの](#pypy-では遅いもの)
-    - [定数倍高速化](#定数倍高速化)
-    - [2 重ループ](#2-重ループ)
 
 ## やり方
 
@@ -35,16 +35,11 @@ source .venv/Scripts/activate
   - kernprof -l D.py < test_D_input_4.txt
   - python -m line_profiler D.py.lprof
 
-- 復習
-  - 使ったアルゴリズムを docstrings に書いて、後でググれるようにする
-  - リンク張る
-  - もし関数化したほうが良さそうなら、Algo に入れる
-
 ## Python Tips
 
 ### オーダー
 
-Python で乗るのは 10\*\*6 くらいまで
+Python で通るのは 10\*\*6 くらいまで
 
 ### 入力
 
@@ -67,55 +62,10 @@ split は スペースで区切るのと、\n を削除する. スペースが�
 
 ### pypy では遅いもの
 
+pypy のバージョンが上がってだいぶ改善されてる
+
 - 再帰
 - dict
 - 文字
 - deque
-- 内包表記　(ベタ書きの方が速いらしい)
-
-### 定数倍高速化
-
-- enumerate
-- 小さいループを外に
-- .をなくす
-
-```python
-r_append = res.append
-
-for i in range(n):
-    r_append(1)
-```
-
-### 2 重ループ
-
-- flag を使う: こっちのほうが絶対わかりやすい
-
-```python
-flag = False
-for i in l1:
-    for j in l2:
-        print(i, j)
-        if i == 2 and j == 20:
-            flag = True
-            print('BREAK')
-            break
-    if flag:
-        break
-```
-
-- continue, else を 使う: 分かるけどわかりにくい
-
-```python
-for i in l1:
-    for j in l2:
-        print(i, j)
-        if i == 2 and j == 20:
-            print('BREAK')
-            break
-    else:
-        continue # break が呼ばれなければ そとの for文を続ける
-
-    break # continue されなければ 外のループもbreak
-```
-
-- itertools.product()はループ数が増えるので使わないべき
+- 内包表記 (ベタ書きの方が速いらしい)
